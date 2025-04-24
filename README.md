@@ -19,6 +19,12 @@
 - DIFY_API_KEY，Dify Agent 发布后获得的 API Key，参考[Dify - Developing with APIs](https://docs.dify.ai/guides/application-publishing/developing-with-apis)
 - DIFY_BASE_URL，选填，默认值：https://api.dify.ai/v1
 
+## 钉钉 AI 助理直通模式配置
+
+1. 关闭所有技能，目的是用 Dify 管理技能，而不是钉钉
+2. 在规划中关闭增强推理，目的是改成用 Dify 的推理，而不是钉钉的
+3. 添加直通模式的自定义技能，yaml 文件参考 [stream.yaml](stream.yaml)
+
 ## 运行
 
 ```python

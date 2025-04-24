@@ -1,0 +1,89 @@
+## 直通模式可以将AI助理的上下文直接传递给开发者的Action，不再经过AI助理的大模型,可参考文档(https://opensource.dingtalk.com/developerpedia/docs/explore/tutorials/assistant_ability/passthrough_mode/java/intro)
+openapi: 3.0.1
+info:
+  title: 直通模式
+  description: 直通模式
+  version: v1.0.0
+## 推荐使用 钉钉 Stream 协议，无需提供公网域名(https://open.dingtalk.com/document/ai-dev/actions-advanced-settings#dc65a46ae9nis)
+x-dingtalk-protocol: stream
+paths:
+  /v1/stream:
+    post:
+      description: 直通模式的接口
+      summary: 直通模式的接口
+      operationId: DingTalkGraph
+      x-dingtalk-params-confirm: false
+      x-dingtalk-display-result: disabled
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraphRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphResponse'
+components:
+  schemas:
+    GraphRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: 操作人的 User ID
+          x-dingtalk-context:
+            property: currentUser
+            format: userId
+        unionId:
+          type: string
+          description: 操作人的 Union ID
+          x-dingtalk-context:
+            property: currentUser
+            format: unionId
+        jobNum:
+          type: string
+          description: jobNum
+          x-dingtalk-context:
+            property: currentUser
+            format: jobNum
+        corpId:
+          type: string
+          description: corpId
+          x-dingtalk-context:
+            property: currentOrg
+            format: corpId
+        rawInput:
+          type: string
+          description: rawInput
+          x-dingtalk-context:
+            property: currentInput
+            format: raw
+        inputAttribute:
+          type: string
+          description: inputAttribute
+          x-dingtalk-context:
+            property: currentInput
+            format: attribute
+        openConversationId:
+          type: string
+          description: openConversationId
+          x-dingtalk-context:
+            property: currentConversation
+            format: openConversationId
+        conversationToken:
+          type: string
+          description: conversationToken
+          x-dingtalk-context:
+            property: currentConversation
+            format: conversationToken
+        sessionWebhook:
+          type: string
+          description: sessionWebhook
+          x-dingtalk-context:
+            property: currentConversation
+            format: sessionWebhook
+    GraphResponse:
+      type: object

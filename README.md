@@ -33,6 +33,12 @@ python3 main.py
 
 备注：本项目代码在 Python 3.13 测试通过。
 
+
+## 注意事项
+
+1. 当前仅支持非流式交互，如果自定义搭建卡片展示不出来数据的话，需要检查是否开启了流式组件。
+
+
 ## 参考资料
 
 1. [钉钉 AI 助理直通模式开发教程 - Python](https://opensource.dingtalk.com/developerpedia/docs/explore/tutorials/assistant_ability/passthrough_mode/python)
